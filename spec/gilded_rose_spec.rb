@@ -93,4 +93,29 @@ describe GildedRose do
 
   end
 
+  context '#Aged Brie' do
+
+    before(:each) do
+      @items = [Item.new("Aged Brie", 2, 10), Item.new("Aged Brie", 0, 10), Item.new("Aged Brie", 2, 50)]
+      GildedRose.new(@items).update_quality()
+    end
+
+    it 'sell_in decreases by 1 each day' do
+      expect(@items[0].sell_in).to eq(1)
+    end
+
+    it 'quality increases by 1 each day' do
+      expect(@items[0].quality).to eq(11)
+    end
+
+    it 'quality increases by 2 each day when sell_in is below 0' do
+      expect(@items[1].quality).to eq(12)
+    end
+
+    it 'maximum quality is 50' do
+      expect(@items[2].quality).to eq(50)
+    end
+
+  end
+
 end
