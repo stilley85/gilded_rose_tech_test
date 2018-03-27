@@ -18,8 +18,7 @@ items = [
   DeadlineItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
   DeadlineItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
   DeadlineItem.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
-  # This Conjured item does not work properly yet
-  ConjuredItem.new(name="Conjured Mana Cake", sell_in=3, quality=6), # <-- :O
+  ConjuredItem.new(name="Conjured Mana Cake", sell_in=3, quality=6)
 ]
 
 days = 2
