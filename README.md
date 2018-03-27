@@ -1,7 +1,6 @@
 Gilded Rose Tech Test
 =====================
 
-======================================
 Gilded Rose Requirements Specification
 ======================================
 
