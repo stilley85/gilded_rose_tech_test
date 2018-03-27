@@ -16,15 +16,15 @@ describe 'MaturingItem' do
     end
 
     it 'quality increases by 2 each day when sell_in is below 0' do
-      expired_item = MaturingItem.new('foo', 0, 40)
-      expired_item.update_quality
-      expect(expired_item.quality).to eq(42)
+      item = MaturingItem.new('foo', 0, 40)
+      item.update_quality
+      expect(item.quality).to eq(42)
     end
 
     it 'Quality cannot go above MAX_QUALITY' do
-      maxed_item = MaturingItem.new('foo', 0, GildedRose::MAX_QUALITY)
-      maxed_item.update_quality
-      expect(maxed_item.quality).to eq(GildedRose::MAX_QUALITY)
+      item = MaturingItem.new('foo', 0, GildedRose::MAX_QUALITY)
+      item.update_quality
+      expect(item.quality).to eq(GildedRose::MAX_QUALITY)
     end
   end
 end
