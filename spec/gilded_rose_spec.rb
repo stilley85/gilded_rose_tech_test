@@ -26,52 +26,7 @@ end
 #       expect(items[0].name).to eq 'foo'
 #     end
 #   end
-#
-#   context '#standard_item' do
-#     before(:each) do
-#       @items = [NormalItem.new('foo', 5, 10),
-#                 NormalItem.new('foo', -1, 1),
-#                 NormalItem.new('foo', 1, 10)]
-#       GildedRose.new(@items).update_quality
-#     end
-#
-#     it 'sell_in decreases by 1 each day' do
-#       expect(@items[0].sell_in).to eq(4)
-#     end
-#
-#     it 'quality decreases by 1 each day' do
-#       expect(@items[0].quality).to eq(9)
-#     end
-#
-#     it 'Quality cannot fall below 0' do
-#       5.times do
-#         GildedRose.new(@items).update_quality
-#       end
-#       expect(@items[1].quality).to eq(0)
-#     end
-#
-#     it 'Quality reduces by 2 each day if sell_in is below 0' do
-#       2.times do
-#         GildedRose.new(@items).update_quality
-#       end
-#       expect(@items[2].quality).to eq(5)
-#     end
-#   end
-#
-#   context '#Sulfuras, Hand of Ragnaros' do
-#     before(:each) do
-#       @items = [LegendaryItem.new('Sulfuras, Hand of Ragnaros', 0, 80)]
-#       GildedRose.new(@items).update_quality
-#     end
-#
-#     it 'sell_in does not change' do
-#       expect(@items[0].sell_in).to eq(0)
-#     end
-#
-#     it 'quality does not change' do
-#       expect(@items[0].quality).to eq(80)
-#     end
-#   end
+
 #
 #   context '#Backstage passes to a TAFKAL80ETC concert' do
 #     before(:each) do
