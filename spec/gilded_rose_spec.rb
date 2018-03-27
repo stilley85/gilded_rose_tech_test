@@ -12,7 +12,7 @@ describe GildedRose do
   context '#standard_item' do
     before(:each) do
       @items = [Item.new('foo', 5, 10),
-                Item.new('foo', 5, 1),
+                Item.new('foo', -1, 1),
                 Item.new('foo', 1, 10)]
       GildedRose.new(@items).update_quality
     end
@@ -61,7 +61,7 @@ describe GildedRose do
                 Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 20),
                 Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 20),
                 Item.new('Backstage passes to a TAFKAL80ETC concert', 0, 20),
-                Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 50)]
+                Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 49)]
       GildedRose.new(@items).update_quality
     end
 
