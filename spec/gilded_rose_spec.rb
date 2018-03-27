@@ -1,4 +1,5 @@
 require 'gilded_rose'
+require 'item'
 
 describe GildedRose do
   describe '#update_quality' do
@@ -114,13 +115,33 @@ describe GildedRose do
       expect(@items[2].quality).to eq(50)
     end
   end
-end
 
-describe Item do
-  describe '#to_s' do
-    it 'converts the item to a string' do
-      item = Item.new('foo', 0, 0)
-      expect(item.to_s).to eq 'foo, 0, 0'
+  context '#conjured_item' do
+    before(:each) do
+      @items = [Item.new('Conjured Mana Cake', 5, 10),
+                Item.new('Conjured Mana Cake', -1, 1),
+                Item.new('Conjured Mana Cake', 1, 10)]
+      GildedRose.new(@items).update_quality
+    end
+
+    it 'sell_in decreases by 1 each day' do
+      expect(@items[0].sell_in).to eq(4)
+    end
+
+    it 'quality decreases by 2 each day' do
+      expect(@items[0].quality).to eq(8)
+    end
+
+    it 'Quality cannot fall below 0' do
+      5.times do
+        GildedRose.new(@items).update_quality
+      end
+      expect(@items[1].quality).to eq(0)
+    end
+
+    it 'Quality reduces by 4 each day if sell_in is below 0' do
+      GildedRose.new(@items).update_quality
+      expect(@items[2].quality).to eq(4)
     end
   end
 end
