@@ -1,10 +1,15 @@
 require 'gilded_rose'
 require 'item'
+require 'conjureditem'
+require 'maturingitem'
+require 'normalitem'
+require 'legendaryitem'
+require 'deadlineitem'
 
 describe GildedRose do
   describe '#update_quality' do
     it 'does not change the name' do
-      items = [Item.new('foo', 0, 0)]
+      items = [NormalItem.new('foo', 0, 0)]
       GildedRose.new(items).update_quality
       expect(items[0].name).to eq 'foo'
     end
@@ -12,9 +17,9 @@ describe GildedRose do
 
   context '#standard_item' do
     before(:each) do
-      @items = [Item.new('foo', 5, 10),
-                Item.new('foo', -1, 1),
-                Item.new('foo', 1, 10)]
+      @items = [NormalItem.new('foo', 5, 10),
+                NormalItem.new('foo', -1, 1),
+                NormalItem.new('foo', 1, 10)]
       GildedRose.new(@items).update_quality
     end
 
@@ -43,7 +48,7 @@ describe GildedRose do
 
   context '#Sulfuras, Hand of Ragnaros' do
     before(:each) do
-      @items = [Item.new('Sulfuras, Hand of Ragnaros', 0, 80)]
+      @items = [LegendaryItem.new('Sulfuras, Hand of Ragnaros', 0, 80)]
       GildedRose.new(@items).update_quality
     end
 
@@ -58,11 +63,11 @@ describe GildedRose do
 
   context '#Backstage passes to a TAFKAL80ETC concert' do
     before(:each) do
-      @items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 15, 20),
-                Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 20),
-                Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 20),
-                Item.new('Backstage passes to a TAFKAL80ETC concert', 0, 20),
-                Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 49)]
+      @items = [DeadlineItem.new('Backstage passes to a TAFKAL80ETC concert', 15, 20),
+                DeadlineItem.new('Backstage passes to a TAFKAL80ETC concert', 10, 20),
+                DeadlineItem.new('Backstage passes to a TAFKAL80ETC concert', 5, 20),
+                DeadlineItem.new('Backstage passes to a TAFKAL80ETC concert', 0, 20),
+                DeadlineItem.new('Backstage passes to a TAFKAL80ETC concert', 5, 49)]
       GildedRose.new(@items).update_quality
     end
 
@@ -93,9 +98,9 @@ describe GildedRose do
 
   context '#Aged Brie' do
     before(:each) do
-      @items = [Item.new('Aged Brie', 2, 10),
-                Item.new('Aged Brie', 0, 10),
-                Item.new('Aged Brie', 2, 50)]
+      @items = [MaturingItem.new('Aged Brie', 2, 10),
+                MaturingItem.new('Aged Brie', 0, 10),
+                MaturingItem.new('Aged Brie', 2, 50)]
       GildedRose.new(@items).update_quality
     end
 
@@ -118,9 +123,9 @@ describe GildedRose do
 
   context '#conjured_item' do
     before(:each) do
-      @items = [Item.new('Conjured Mana Cake', 5, 10),
-                Item.new('Conjured Mana Cake', -1, 1),
-                Item.new('Conjured Mana Cake', 1, 10)]
+      @items = [ConjuredItem.new('Conjured Mana Cake', 5, 10),
+                ConjuredItem.new('Conjured Mana Cake', -1, 1),
+                ConjuredItem.new('Conjured Mana Cake', 1, 10)]
       GildedRose.new(@items).update_quality
     end
 
