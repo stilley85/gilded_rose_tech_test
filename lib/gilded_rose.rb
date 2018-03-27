@@ -7,8 +7,7 @@ class GildedRose
   def update_quality
     @items.each do |item|
       if item.name == "Sulfuras, Hand of Ragnaros"
-        item.sell_in = item.sell_in
-        item.quality = item.quality
+        return item
       elsif item.name == "Aged Brie"
         item.sell_in -= 1
         if item.sell_in > 0
@@ -33,16 +32,15 @@ class GildedRose
           over_max?(item)
         end
       else
-        item.sell_in -= 1
-        if item.sell_in < 0
-          item.quality -= 2
-          below_min?(item)
-        else
-          item.quality -= 1
-          below_min?(item)
-        end
+        normal_item(item)
       end
     end
+  end
+
+  def normal_item(item)
+    item.sell_in -= 1
+    item.sell_in < 0 ? item.quality -= 2 : item.quality -= 1
+    below_min?(item)
   end
 
   private
