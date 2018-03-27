@@ -9,14 +9,7 @@ class GildedRose
       if item.name == "Sulfuras, Hand of Ragnaros"
         return item
       elsif item.name == "Aged Brie"
-        item.sell_in -= 1
-        if item.sell_in > 0
-          item.quality += 1
-          over_max?(item)
-        else
-          item.quality += 2
-          over_max?(item)
-        end
+        maturing_item(item)
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
         item.sell_in -= 1
         if item.sell_in < 0
@@ -41,6 +34,12 @@ class GildedRose
     item.sell_in -= 1
     item.sell_in < 0 ? item.quality -= 2 : item.quality -= 1
     below_min?(item)
+  end
+
+  def maturing_item(item)
+    item.sell_in -= 1
+    item.sell_in > 0 ? item.quality += 1 : item.quality += 2
+    over_max?(item)
   end
 
   private
