@@ -40,4 +40,20 @@ describe GildedRose do
     end
   end
 
+  context '#Sulfuras, Hand of Ragnaros' do
+
+    before(:each) do
+      @items = [Item.new("Sulfuras, Hand of Ragnaros", 0, 80)]
+      GildedRose.new(@items).update_quality()
+    end
+
+    it 'sell_in does not change' do
+      expect(@items[0].sell_in).to eq(0)
+    end
+
+    it 'quality does not change' do
+      expect(@items[0].quality).to eq(80)
+    end
+  end
+
 end
