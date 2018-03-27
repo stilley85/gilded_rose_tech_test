@@ -119,3 +119,13 @@ describe GildedRose do
   end
 
 end
+
+describe Item do
+  describe '#to_s' do
+    it 'converts the item to a string' do
+      item = Item.new("foo", 0, 0)
+      expect(item.to_s).to eq "foo, 0, 0"
+    end
+  end
+
+end
