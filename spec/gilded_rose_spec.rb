@@ -1,20 +1,20 @@
 require 'gilded_rose'
 
 describe GildedRose do
-
   describe '#update_quality' do
     it 'does not change the name' do
-      items = [Item.new("foo", 0, 0)]
-      GildedRose.new(items).update_quality()
-      expect(items[0].name).to eq "foo"
+      items = [Item.new('foo', 0, 0)]
+      GildedRose.new(items).update_quality
+      expect(items[0].name).to eq 'foo'
     end
   end
 
   context '#standard_item' do
-
     before(:each) do
-      @items = [Item.new("foo", 5, 10), Item.new("foo", 5, 1), Item.new("foo", 1, 10)]
-      GildedRose.new(@items).update_quality()
+      @items = [Item.new('foo', 5, 10),
+                Item.new('foo', 5, 1),
+                Item.new('foo', 1, 10)]
+      GildedRose.new(@items).update_quality
     end
 
     it 'sell_in decreases by 1 each day' do
@@ -27,24 +27,23 @@ describe GildedRose do
 
     it 'Quality cannot fall below 0' do
       5.times do
-        GildedRose.new(@items).update_quality()
+        GildedRose.new(@items).update_quality
       end
       expect(@items[1].quality).to eq(0)
     end
 
     it 'Quality reduces by 2 each day if sell_in is below 0' do
       2.times do
-        GildedRose.new(@items).update_quality()
+        GildedRose.new(@items).update_quality
       end
       expect(@items[2].quality).to eq(5)
     end
   end
 
   context '#Sulfuras, Hand of Ragnaros' do
-
     before(:each) do
-      @items = [Item.new("Sulfuras, Hand of Ragnaros", 0, 80)]
-      GildedRose.new(@items).update_quality()
+      @items = [Item.new('Sulfuras, Hand of Ragnaros', 0, 80)]
+      GildedRose.new(@items).update_quality
     end
 
     it 'sell_in does not change' do
@@ -57,14 +56,13 @@ describe GildedRose do
   end
 
   context '#Backstage passes to a TAFKAL80ETC concert' do
-
     before(:each) do
-      @items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 20),
-                Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 20),
-                Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 20),
-                Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 50)]
-      GildedRose.new(@items).update_quality()
+      @items = [Item.new('Backstage passes to a TAFKAL80ETC concert', 15, 20),
+                Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 20),
+                Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 20),
+                Item.new('Backstage passes to a TAFKAL80ETC concert', 0, 20),
+                Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 50)]
+      GildedRose.new(@items).update_quality
     end
 
     it 'sell_in decreases by 1 each day' do
@@ -90,14 +88,14 @@ describe GildedRose do
     it 'maximum quality is 50' do
       expect(@items[4].quality).to eq(50)
     end
-
   end
 
   context '#Aged Brie' do
-
     before(:each) do
-      @items = [Item.new("Aged Brie", 2, 10), Item.new("Aged Brie", 0, 10), Item.new("Aged Brie", 2, 50)]
-      GildedRose.new(@items).update_quality()
+      @items = [Item.new('Aged Brie', 2, 10),
+                Item.new('Aged Brie', 0, 10),
+                Item.new('Aged Brie', 2, 50)]
+      GildedRose.new(@items).update_quality
     end
 
     it 'sell_in decreases by 1 each day' do
@@ -115,17 +113,14 @@ describe GildedRose do
     it 'maximum quality is 50' do
       expect(@items[2].quality).to eq(50)
     end
-
   end
-
 end
 
 describe Item do
   describe '#to_s' do
     it 'converts the item to a string' do
-      item = Item.new("foo", 0, 0)
-      expect(item.to_s).to eq "foo, 0, 0"
+      item = Item.new('foo', 0, 0)
+      expect(item.to_s).to eq 'foo, 0, 0'
     end
   end
-
 end
