@@ -14,13 +14,13 @@ describe 'ConjuredItem' do
       expect(item.quality).to eq(8)
     end
 
-    it 'Quality cannot fall below 0' do
+    it 'quality cannot fall below MIN_QUALITY' do
       item = ConjuredItem.new('foo', 5, GildedRose::MIN_QUALITY)
       item.update_quality
       expect(item.quality).to eq(GildedRose::MIN_QUALITY)
     end
 
-    it 'Quality reduces by 4 each day if sell_in is below 0' do
+    it 'quality reduces by 4 each day if sell_in is below 0' do
       item = ConjuredItem.new('foo', 0, 20)
       item.update_quality
       expect(item.quality).to eq(16)

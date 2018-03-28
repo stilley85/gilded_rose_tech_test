@@ -2,7 +2,6 @@ require 'maturingitem'
 
 describe 'MaturingItem' do
   context '#update_quality' do
-
     it 'sell_in decreases by 1 each day' do
       item = MaturingItem.new('foo', 2, 10)
       item.update_quality
@@ -21,7 +20,7 @@ describe 'MaturingItem' do
       expect(item.quality).to eq(42)
     end
 
-    it 'Quality cannot go above MAX_QUALITY' do
+    it 'quality cannot go above MAX_QUALITY' do
       item = MaturingItem.new('foo', 0, GildedRose::MAX_QUALITY)
       item.update_quality
       expect(item.quality).to eq(GildedRose::MAX_QUALITY)

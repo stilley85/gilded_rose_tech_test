@@ -2,7 +2,6 @@ require 'legendaryitem'
 
 describe 'LegendaryItem' do
   context '#update_quality' do
-
     before(:each) do
       @item = LegendaryItem.new('foo', 1, 80)
       @item.update_quality

@@ -56,3 +56,6 @@ I began by fixing the test given to try and get an idea of what the code was doi
 As only a single test was given this wasn't much help so I began looking through the code to
 get an idea of what was happening. Once I had an idea of what the code was doing I decided
 the most useful thing to do would be to write tests before moving forward with refactoring the code.
+
+Once I'd written a testing suite I refactored the code to be easier for me to read and adapt. I then broke it down into methods, ensuring the tests remained passing throughout. These methods
+enable me to see I would need a separate class for each type of item so I created item type classes which inherited from the Item class. My tests all remained in the gildedrose_spec file which now relied on multiple classes so I pulled the relevant tests out into their own class spec files.

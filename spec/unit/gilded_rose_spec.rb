@@ -1,8 +1,7 @@
 require 'gilded_rose'
 describe GildedRose do
-
-  let(:item1) { double("An item", update_quality: 'update_quality') }
-  let(:item2) { double("An item", update_quality: 'update_quality') }
+  let(:item1) { double('An item', update_quality: 'update_quality') }
+  let(:item2) { double('An item', update_quality: 'update_quality') }
 
   context '#update_quality' do
     it 'calls the update_quality method on each item' do

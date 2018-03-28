@@ -2,7 +2,6 @@ require 'deadlineitem'
 
 describe 'DealineItem' do
   context 'update_quality' do
-
     it 'sell_in decreases by 1 each day' do
       item = DeadlineItem.new('foo', 2, 10)
       item.update_quality
@@ -15,14 +14,14 @@ describe 'DealineItem' do
       expect(item.quality).to eq(11)
     end
 
-    it 'quality increases by 2 when sell_in is between 5-10' do
-      item = DeadlineItem.new('foo', 7, 10)
+    it 'quality increases by 2 when sell_in is between 6-10' do
+      item = DeadlineItem.new('foo', 6, 10)
       item.update_quality
       expect(item.quality).to eq(12)
     end
 
-    it 'quality increases by 3 when sell_in is between 5-0' do
-      item = DeadlineItem.new('foo', 3, 10)
+    it 'quality increases by 3 when sell_in is between 5-1' do
+      item = DeadlineItem.new('foo', 1, 10)
       item.update_quality
       expect(item.quality).to eq(13)
     end
@@ -33,7 +32,7 @@ describe 'DealineItem' do
       expect(item.quality).to eq(0)
     end
 
-    it 'maximum quality is 50' do
+    it 'quality cannot go above MAX_QUALITY' do
       item = DeadlineItem.new('foo', 5, GildedRose::MAX_QUALITY)
       item.update_quality
       expect(item.quality).to eq(GildedRose::MAX_QUALITY)

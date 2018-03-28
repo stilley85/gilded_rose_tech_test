@@ -1,7 +1,6 @@
 require 'item'
 
 describe Item do
-
   describe '#initialize' do
     it 'initializes with a name' do
       item = Item.new('foo', 0, 0)
