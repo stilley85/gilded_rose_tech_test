@@ -1,9 +1,11 @@
-require_relative 'item'
+class DeadlineItem
+  def initialize(item)
+    @item = item
+  end
 
-class DeadlineItem < Item
   def update_quality
-    @sell_in -= 1
-    @sell_in < 0 ? @quality = 0 : @sell_in < 5 ? @quality += 3 : @sell_in < 10 ? @quality += 2 : @quality += 1
-    @quality = GildedRose::MAX_QUALITY if @quality > GildedRose::MAX_QUALITY
+    @item.sell_in -= 1
+    @item.sell_in < 0 ? @item.quality = 0 : @item.sell_in < 5 ? @item.quality += 3 : @item.sell_in < 10 ? @item.quality += 2 : @item.quality += 1
+    @item.quality = GildedRose::MAX_QUALITY if @item.quality > GildedRose::MAX_QUALITY
   end
 end
