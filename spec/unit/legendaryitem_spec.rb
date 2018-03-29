@@ -4,8 +4,7 @@ describe 'LegendaryItem' do
   context '#update_quality' do
     before(:each) do
       @item = Item.new('Sulfuras, Hand of Ragnaros', 1, 80)
-      @update = LegendaryItem.new(@item)
-      @update.update_quality
+      LegendaryItem.new(@item).update_quality
     end
 
     it 'sell_in does not change' do
